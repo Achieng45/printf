@@ -2,43 +2,32 @@
 #define MAIN_H
 
 #include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
 
-#define SIZE 1024000 /* buffer size */
+int _putchar(char c);
+int print_int(va_list arg);
+int print_unsigned(va_list arg);
+int _printf(const char *format, ...);
+int print_char(va_list arg);
+int print_str(va_list arg);
+int print_percent(void);
+void print_binary(unsigned int n, unsigned int* printed);
+int print_unsignedToBinary(va_list arg);
+int print_oct(va_list arg);
+int print_unsignedIntToHex(unsigned int num, char _case);
+int print_hex_base(va_list arg, char _case);
+int print_hex(va_list arg);
+int print_HEX(va_list arg);
+int print_STR (va_list arg);
 
 /**
- * struct sp - Struct sp
- *
- * @sp: The specifier
- * @f: The function associated
+ * struct identifierStruct - structure definition of a printTypeStruct
+ * @indentifier: type
+ * @printer: function to print
  */
-typedef struct sp
+typedef struct identifierStruct
 {
-	char sp;
-	int (*f)(va_list, char *, int);
-} sp_t;
-
-int _printf(const char *format, ...);
-int (*get_sp_func(char c))(va_list, char *, int);
-int add_char(va_list ap, char *buffer, int i);
-int add_str(va_list ap, char *buffer, int i);
-int add_str_print(va_list ap, char *buffer, int i);
-int copy_to_buff(char *s, char *buffer, int i);
-int add_percent(va_list ap, char *buffer, int i);
-char *int_to_str(unsigned long int num, int base);
-int add_int(va_list ap, char *buffer, int i);
-int add_unsigned_int(va_list ap, char *buffer, int i);
-int add_bin(va_list ap, char *buffer, int i);
-int add_hex_lower(va_list ap, char *buffer, int i);
-int add_hex_upper(va_list ap, char *buffer, int i);
-int add_oct(va_list ap, char *buffer, int i);
-int _strlen(char *s);
-char *rev_string(char *s);
-int add_rev(va_list ap, char *buffer, int i);
-char *rot13(char *s);
-int add_rot(va_list ap, char *buffer, int i);
-int add_address(va_list ap, char *buffer, int i);
+char *indentifier;
+int (*printer)(va_list);
+} identifierStruct;
 
 #endif
