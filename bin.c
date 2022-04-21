@@ -1,26 +1,16 @@
 #include "main.h"
 
 /**
- * add_bin - adds a given integer to a given buffer as binary number
- * @ap: va_list containing the integer to add
- * @buffer: character buffer
- * @i: index from which to start adding to buffer
- *
- * Return: number of characters added
+ * print_binary - function that prints the binary representation of a number
+ * @n: number to be printed in binary
+ * @printed: hold the number of characters printed
  */
-int add_bin(va_list ap, char *buffer, int i)
+void print_binary(unsigned int n, unsigned int *printed)
 {
-	unsigned int num = va_arg(ap, unsigned int);
-	int j = 0;
-	char *num_str;
-
-	num_str = int_to_str(num, 2);
-	if (!num_str)
-		return (0);
-
-	for (j = 0; num_str[j] != '\0'; j++, i++)
-		buffer[i] = num_str[j];
-
-	free(num_str);
-	return (j);
+	if (n > 1)
+	{
+		*printed += 1;
+		print_binary(n >> 1, printed);
+	}
+	_putchar((n & 1) + '0');
 }
