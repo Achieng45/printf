@@ -1,18 +1,10 @@
-#include "main.h"
-
+#include <unistd.h>
 /**
- * add_char - adds a given character to a given buffer
- * @ap: va_list containing the character to add
- * @buffer: character buffer
- * @i: index from which to start adding to buffer
- *
- * Return: 1(number of characters added)
+ * _putchar - writes the character c to stdout
+ * @c: the character to print
+ * Return: 0 on success and -1 error and errno is set appropiately
  */
-int add_char(va_list ap, char *buffer, int i)
+int _putchar(char c)
 {
-	char c = (char) va_arg(ap, int);
-
-	buffer[i] = c;
-
-	return (1);
+	return (write(1, &c, 1));
 }
